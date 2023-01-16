@@ -8,8 +8,8 @@ public class PlayerCam : MonoBehaviour
     public float SenX;
     public float SenY;
     public Transform Orientation;
-    float xRotation;
-    float yRotation;
+    [SerializeField]float xRotation;
+    [SerializeField]float yRotation;
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
