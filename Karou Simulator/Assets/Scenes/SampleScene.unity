@@ -231,7 +231,8 @@ GameObject:
   - component: {fileID: 158333034}
   - component: {fileID: 158333035}
   - component: {fileID: 158333036}
-  m_Layer: 0
+  - component: {fileID: 158333037}
+  m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -286,6 +287,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 2
   Orientation: {fileID: 158333034}
+--- !u!114 &158333037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 158333033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73240506ebc4e0645bf3ab5a157d72c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StartRaycast: {fileID: 1832554492}
+  x: 0
 --- !u!1 &188554264
 GameObject:
   m_ObjectHideFlags: 0
@@ -1037,8 +1052,7 @@ MonoBehaviour:
   SenX: 60
   SenY: 60
   Orientation: {fileID: 158333034}
-  xRotation: 0
-  yRotation: 0
+  head: {fileID: 1832554492}
 --- !u!114 &1147647836
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1307,7 +1321,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1832554492}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1340,7 +1354,7 @@ GameObject:
   - component: {fileID: 1963185099}
   - component: {fileID: 1963185101}
   - component: {fileID: 1963185100}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Eyes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1424,7 +1438,7 @@ GameObject:
   - component: {fileID: 1993103523}
   - component: {fileID: 1993103522}
   - component: {fileID: 1993103521}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
