@@ -6,7 +6,9 @@ using UnityEngine;
 public class GatheringSystem : MonoBehaviour
 {
     public Transform StartRaycast;
+    public GameObject collectText;
     public int x;
+    [SerializeField]bool canCollect;
     void Update()
     {
         RaycastHit hit;
@@ -14,26 +16,42 @@ public class GatheringSystem : MonoBehaviour
         {
             Debug.DrawRay(StartRaycast.position, StartRaycast.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
             Debug.Log(hit.collider.name);
-            bool canCollect = false;
-            foreach (var character in hit.collider.name)
+            collectText.SetActive(false);
+            if (!canCollect)
             {
-                if (character == '$')
+                foreach (var character in hit.collider.name)
                 {
-                    canCollect = true;
-                    break;
+                    if (character == '$')
+                    {
+                        canCollect = true;
+                        break;
+                    }
                 }
             }
-            if (canCollect && Input.GetKeyDown(KeyCode.E))
+            if (canCollect)
             {
-                int quantity = Int16.Parse(hit.collider.name.Substring(0, 1));
-                quantity--;
-                hit.collider.name = quantity.ToString() + hit.collider.name.Substring(1, hit.collider.name.Length - 1);
-                x++;
-                if (quantity == 0)
+                collectText.transform.position = new Vector3(hit.collider.transform.position.x, hit.collider.transform.position.y + 1.5f, hit.collider.transform.position.z);
+                collectText.SetActive(true);
+                collectText.transform.LookAt(StartRaycast);
+                if (Input.GetKeyDown(KeyCode.E))
                 {
-                    Destroy(hit.collider.gameObject);
+                    int quantity = Int16.Parse(hit.collider.name.Substring(0, 1));
+                    quantity--;
+                    hit.collider.name = quantity.ToString() + hit.collider.name.Substring(1, hit.collider.name.Length - 1);
+                    x++;
+                    if (quantity == 0)
+                    {
+                        canCollect = false;
+                        collectText.SetActive(false);
+                        Destroy(hit.collider.gameObject);
+                    }
                 }
             }
+        }
+        else
+        {
+            canCollect = false;
+            collectText.SetActive(false);
         }
     }
 }
