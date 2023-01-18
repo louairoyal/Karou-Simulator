@@ -26,7 +26,20 @@ public class ResourcesSpawn : MonoBehaviour
             for (int y = 0; y < ResourcesCount[i]; y++)
             {
                 _Resource[i] = Instantiate(Resources[i], new Vector3(UnityEngine.Random.Range(-3.35f * 3f, 3.35f * 3f), .5f, UnityEngine.Random.Range(-4.34f * 3f, 4.34f * 3f)), Quaternion.identity, parentForResources);
-                _Resource[i].name = ResourcesCount[i].ToString() + " " + _Resource[i].name;
+                string RsName = "";
+                foreach (char character in _Resource[i].name)
+                {
+                    if (character != '$')
+                    {
+                        RsName += character;
+                    }
+                    else
+                    {
+                        RsName += character;
+                        break;
+                    }
+                }
+                _Resource[i].name = ResourcesCount[i].ToString() + " " + RsName;
             }
         }
     }

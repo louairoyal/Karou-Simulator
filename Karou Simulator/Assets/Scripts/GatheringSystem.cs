@@ -13,12 +13,14 @@ public class GatheringSystem : MonoBehaviour
         if (Physics.Raycast(StartRaycast.position, StartRaycast.TransformDirection(Vector3.forward), out hit, 4f))
         {
             Debug.DrawRay(StartRaycast.position, StartRaycast.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
+            Debug.Log(hit.collider.name);
             bool canCollect = false;
             foreach (var character in hit.collider.name)
             {
                 if (character == '$')
                 {
                     canCollect = true;
+                    break;
                 }
             }
             if (canCollect && Input.GetKeyDown(KeyCode.E))
