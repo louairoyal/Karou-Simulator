@@ -8,11 +8,12 @@ public class GatheringSystem : MonoBehaviour
     public Transform StartRaycast;
     public GameObject collectText;
     public int x;
+    public float rclengh;
     [SerializeField]bool canCollect;
     void Update()
     {
         RaycastHit hit;
-        if (Physics.Raycast(StartRaycast.position, StartRaycast.TransformDirection(Vector3.forward), out hit, 4f))
+        if (Physics.Raycast(StartRaycast.position, StartRaycast.TransformDirection(Vector3.forward), out hit, rclengh))
         {
             Debug.DrawRay(StartRaycast.position, StartRaycast.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
             Debug.Log(hit.collider.name);

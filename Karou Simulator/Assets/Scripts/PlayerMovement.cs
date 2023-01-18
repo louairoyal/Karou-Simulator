@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -23,6 +24,14 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         MovePlayer();
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            Speed = 5;
+        }
+        else
+        {
+            Speed = 2;
+        }
     }
 
     private void MyInput()
@@ -37,3 +46,4 @@ public class PlayerMovement : MonoBehaviour
         rb.AddForce(MoveDirection.normalized * Speed * 10f, ForceMode.Force);
     }
 }
+
