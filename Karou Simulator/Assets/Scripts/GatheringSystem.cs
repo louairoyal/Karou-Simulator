@@ -39,7 +39,12 @@ public class GatheringSystem : MonoBehaviour
                     int quantity = Int16.Parse(hit.collider.name.Substring(0, 1));
                     quantity--;
                     hit.collider.name = quantity.ToString() + hit.collider.name.Substring(1, hit.collider.name.Length - 1);
-                    x++;
+                    string ResourceName = "";
+                    for (int i = 1; i < hit.collider.name.Length; i++)
+                    {
+
+                    }
+                    SaveData.addLoot(hit.collider.name, +1);
                     if (quantity == 0)
                     {
                         canCollect = false;
