@@ -16,7 +16,7 @@ public class GatheringSystem : MonoBehaviour
         if (Physics.Raycast(StartRaycast.position, StartRaycast.TransformDirection(Vector3.forward), out hit, rclengh))
         {
             Debug.DrawRay(StartRaycast.position, StartRaycast.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
-            Debug.Log(hit.collider.name);
+            //Debug.Log(hit.collider.name);
             collectText.SetActive(false);
             if (!canCollect)
             {
@@ -31,6 +31,7 @@ public class GatheringSystem : MonoBehaviour
             }
             if (canCollect)
             {
+                canCollect = false;
                 collectText.transform.position = new Vector3(hit.collider.transform.position.x, hit.collider.transform.position.y + 1.5f, hit.collider.transform.position.z);
                 collectText.SetActive(true);
                 collectText.transform.LookAt(StartRaycast);
@@ -53,7 +54,7 @@ public class GatheringSystem : MonoBehaviour
                     quantity--;
 
                     string ResourceName = "";
-                    for (int i = STRQuantity.Length + 2; i < hit.collider.name.Length; i++)
+                    for (int i = STRQuantity.Length + 1; i < hit.collider.name.Length; i++)
                     {
                         if (hit.collider.name[i] != '$')
                         {
@@ -65,7 +66,7 @@ public class GatheringSystem : MonoBehaviour
                         }
                     }
                     hit.collider.name = quantity.ToString() + "$" + ResourceName + "$";
-                    SaveData.addLoot(hit.collider.name, +1);
+                    SaveData.addLoot(ResourceName, + 1);
                     if (quantity == 0)
                     {
                         canCollect = false;

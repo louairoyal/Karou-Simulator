@@ -15,14 +15,12 @@ public class SaveData : MonoBehaviour
         else
         {
             Loot.Add(LootName, quantity);
-            Debug.Log("yes");
         }
     }
     public void Update()
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
-            Debug.Log(Loot.Count);
             for (int i = 0; i < Loot.Count; i++)
             {
                 Debug.Log(Loot.ElementAt(i));

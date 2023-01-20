@@ -7,6 +7,7 @@ using UnityEngine.TextCore.Text;
 public class ResourcesSpawn : MonoBehaviour
 {
     public GameObject[] Resources;
+    public int[] ResourceQuantity;
     public int[] ResourcesCount;
     private GameObject[] _Resource;
     public Transform parentForResources;
@@ -36,11 +37,10 @@ public class ResourcesSpawn : MonoBehaviour
                     }
                     else
                     {
-                        ResName += _Resource[i].name[k];
                         break;
                     }
                 }
-                _Resource[i].name = ResourcesCount[i].ToString()+ "$" + ResName;
+                _Resource[i].name = ResourceQuantity[i].ToString() + "$" + ResName + "$";
             }
         }
     }
