@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6423754899184445451}
   - component: {fileID: 1699148872180658775}
   m_Layer: 0
-  m_Name: coton $
+  m_Name: $coton$
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

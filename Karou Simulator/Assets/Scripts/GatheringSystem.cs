@@ -36,14 +36,35 @@ public class GatheringSystem : MonoBehaviour
                 collectText.transform.LookAt(StartRaycast);
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                    int quantity = Int16.Parse(hit.collider.name.Substring(0, 1));
-                    quantity--;
-                    hit.collider.name = quantity.ToString() + hit.collider.name.Substring(1, hit.collider.name.Length - 1);
-                    string ResourceName = "";
-                    for (int i = 1; i < hit.collider.name.Length; i++)
+                    string STRQuantity = "";
+                    int quantity = 0;
+                    for (int i = 0; i < hit.collider.name.Length; i++)
                     {
-
+                        if (hit.collider.name[i] != '$')
+                        {
+                            STRQuantity += hit.collider.name[i];
+                        }
+                        else
+                        {
+                            quantity = Int16.Parse(STRQuantity);
+                            break;
+                        }
                     }
+                    quantity--;
+
+                    string ResourceName = "";
+                    for (int i = STRQuantity.Length + 2; i < hit.collider.name.Length; i++)
+                    {
+                        if (hit.collider.name[i] != '$')
+                        {
+                            ResourceName += hit.collider.name[i];
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+                    hit.collider.name = quantity.ToString() + "$" + ResourceName + "$";
                     SaveData.addLoot(hit.collider.name, +1);
                     if (quantity == 0)
                     {
